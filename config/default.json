@@ -1,0 +1,35 @@
+{
+  "database": {
+    "host": "localhost",
+    "user": "d3i_user",
+    "password": "pls",
+    "database": "d3i"
+  },
+  "endpoints": {
+    "rankings": "http://${region}.battle.net/d3/en/rankings/${type}/${eraOrSeason}/rift-${hardcore}${class}"
+  },
+  "model": {
+    "items": [
+      "head",
+      "torso",
+      "feet",
+      "hands",
+      "shoulders",
+      "legs",
+      "bracers",
+      "mainHand",
+      "waist",
+      "rightFinger",
+      "leftFinger",
+      "neck"
+    ],
+    "classes": {
+      "dh": "demon-hunter",
+      "wd": "witch-doctor",
+      "barbarian": "barbarian",
+      "crusader": "crusader",
+      "monk": "monk",
+      "wizard": "wizard"
+    }
+  }
+}

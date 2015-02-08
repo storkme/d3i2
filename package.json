@@ -24,7 +24,8 @@
     "request": "^2.53.0",
     "rx": "^2.3.25",
     "traceur": "0.0.84",
-    "traceur-source-maps": "^1.0.6"
+    "traceur-source-maps": "^1.0.6",
+    "winston": "^0.9.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",

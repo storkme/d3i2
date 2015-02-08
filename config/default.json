@@ -3,26 +3,35 @@
     "host": "localhost",
     "user": "d3i_user",
     "password": "pls",
-    "database": "d3i"
+    "database": "d3i",
+    "poolSize": 20
   },
   "endpoints": {
-    "rankings": "http://${region}.battle.net/d3/en/rankings/${type}/${eraOrSeason}/rift-${hardcore}${class}"
+    "rankings": "http://${region}.battle.net/d3/en/rankings/${type}/${eraOrSeason}/rift-${hardcore}${clss}",
+    "api": {
+      "profile": "http://${region}.battle.net/api/d3/profile/${name}-${code}/",
+      "hero": "http://${region}.battle.net/api/d3/profile/${name}-${code}/hero/${heroId}",
+      "item": "http://${region}.battle.net/api/d3/data/${itemData}"
+    }
   },
   "model": {
-    "items": [
-      "head",
-      "torso",
-      "feet",
-      "hands",
-      "shoulders",
-      "legs",
-      "bracers",
-      "mainHand",
-      "waist",
-      "rightFinger",
-      "leftFinger",
-      "neck"
-    ],
+    "items": {
+      "required": [
+        "head",
+        "torso",
+        "feet",
+        "hands",
+        "shoulders",
+        "legs",
+        "bracers",
+        "mainHand",
+        "waist",
+        "rightFinger",
+        "leftFinger",
+        "neck"
+      ],
+      "optional": ["offHand"]
+    },
     "classes": {
       "dh": "demon-hunter",
       "wd": "witch-doctor",

@@ -4,7 +4,7 @@
     "user": "d3i_user",
     "password": "pls",
     "database": "d3i",
-    "poolSize": 20
+    "poolSize": 50
   },
   "endpoints": {
     "rankings": "http://${region}.battle.net/d3/en/rankings/${type}/${eraOrSeason}/rift-${hardcore}${clss}",

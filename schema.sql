@@ -29,7 +29,7 @@ create table hero_stats (
     value real not null
 );
 
-create table items (
+create table hero_items (
     id SERIAL PRIMARY KEY,
     hero_id integer not null REFERENCES hero (id) ON DELETE CASCADE,
     item_id text not null,
@@ -42,14 +42,14 @@ create table items (
 );
 
 create table item_attrs (
-    item_id integer not null REFERENCES items (id) ON DELETE CASCADE,
+    item_id integer not null REFERENCES hero_items (id) ON DELETE CASCADE,
     name text not null,
     val_min real not null,
     val_max real not null
 );
 
 create table item_gems (
-    item_id integer not null REFERENCES items (id) ON DELETE CASCADE,
+    item_id integer not null REFERENCES hero_items (id) ON DELETE CASCADE,
     gem_id text not null,
     rank integer
 );
@@ -62,9 +62,9 @@ create table hero_skills (
 );
 
 create table skills (
+    slug text not null primary key,
     id text not null,
     parent_id text,
-    slug text not null,
     name text not null,
     level integer not null,
     tooltip text not null,
@@ -73,4 +73,12 @@ create table skills (
     icon text,
     type  skill_type not null,
     unique(id, parent_id, class, type)
+);
+
+create table items (
+    id text not null primary key,
+    name text not null,
+    icon text not null,
+    color text not null,
+    type text
 );

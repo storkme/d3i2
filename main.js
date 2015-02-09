@@ -78,7 +78,7 @@ source
                 obs.onNext([rune, 'rune']);
             });
             hero.skills.passive.forEach((passive) => {
-                obs.onNext([passive, 'passive']);
+                obs.onNext([passive.skill, 'passive']);
             });
             obs.onCompleted();
         })

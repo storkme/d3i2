@@ -15,6 +15,7 @@
     }
   },
   "model": {
+    "currentEra": 2,
     "items": {
       "required": [
         "head",

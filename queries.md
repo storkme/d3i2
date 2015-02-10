@@ -9,7 +9,7 @@ SELECT COUNT(*) as count, hi.slot, i.name
     FROM hero_items hi
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN items i ON i.id = hi.item_id
-    WHERE h.class = 'barbarian'
+    WHERE h.class = 'monk'
     GROUP BY hi.slot, i.id
     ORDER BY slot, COUNT(*) DESC;
 ```
@@ -22,7 +22,7 @@ SELECT COUNT(*) as count, ss.name, sr.name
         INNER JOIN hero h ON hs.hero_id = h.id
         INNER JOIN skills ss ON hs.name = ss.slug
         INNER JOIN skills sr ON hs.rune = sr.slug
-    WHERE h.class = 'barbarian'
+    WHERE h.class = 'monk'
         AND hs.type = 'skill'
     GROUP BY ss.name, sr.name
     ORDER BY COUNT(*) DESC;
@@ -35,7 +35,7 @@ SELECT COUNT(*) as count, s.name
     FROM hero_skills hs
         INNER JOIN hero h ON hs.hero_id = h.id
         INNER JOIN skills s ON hs.name = s.slug
-    WHERE h.class = 'barbarian'
+    WHERE h.class = 'monk'
         AND hs.type = 'passive'
     GROUP BY s.name
     ORDER BY COUNT(*) DESC;
@@ -71,4 +71,17 @@ SELECT COUNT(*) as count, i.name as name
         AND (slot = 'leftFinger' OR slot = 'rightFinger' OR slot = 'neck')
     GROUP BY i.name
     ORDER BY COUNT(*) DESC;
+```
+
+## popular item stats by slot
+
+```SQL
+SELECT hi.slot, COUNT(*) as count, ia.name as name, AVG(ia.val_min)
+    FROM hero_items hi
+        INNER JOIN hero h ON hi.hero_id = h.id
+        INNER JOIN item_attrs ia on hi.id = ia.item_id
+        WHERE h.class = 'barbarian'
+    GROUP BY h.class, hi.slot, ia.name
+    HAVING COUNT(*) > 5
+    ORDER BY h.class, hi.slot, COUNT(*) DESC;
 ```

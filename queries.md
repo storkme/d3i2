@@ -44,13 +44,31 @@ SELECT COUNT(*) as count, s.name
 ## Popular legendary gems
 
 ```SQL
-SELECT COUNT(*) as count, i.name as name
+SELECT h.class, COUNT(*) as count, i.name as name
     FROM hero_items hi
         INNER JOIN item_gems ig ON ig.item_id = hi.id
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN items i ON ig.gem_id = i.id
+    WHERE ig.rank > 0
+    GROUP BY h.class, i.name
+    HAVING COUNT(*) > 5
+    ORDER BY h.class, COUNT(*) DESC;
+```
+
+## Items without legendary gems?
+
+Just using this one for debugging, really...
+
+```SQL
+SELECT COUNT(*) as count, i.name as name
+    FROM hero_items hi
+        INNER JOIN hero h ON hi.hero_id = h.id
+        INNER JOIN items i ON hi.item_id = i.id
     WHERE h.class = 'barbarian'
-        AND ig.rank > 0
+        AND NOT EXISTS (
+                SELECT * FROM item_gems ig WHERE ig.item_id = hi.id
+            )
+        AND (slot = 'leftFinger' OR slot = 'rightFinger' OR slot = 'neck')
     GROUP BY i.name
     ORDER BY COUNT(*) DESC;
 ```

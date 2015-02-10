@@ -50,7 +50,7 @@ SELECT COUNT(*) as count, i.name as name
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN items i ON ig.gem_id = i.id
     WHERE h.class = 'barbarian'
-        AND ig.rank IS NOT NULL
+        AND ig.rank > 0
     GROUP BY i.name
     ORDER BY COUNT(*) DESC;
 ```

@@ -45,7 +45,7 @@ SELECT COUNT(*) as count, s.name
 
 ```SQL
 SELECT h.class, COUNT(*) as count, i.name as name
-    FROM hero_items hi
+    FROM hero_items hi1
         INNER JOIN item_gems ig ON ig.item_id = hi.id
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN items i ON ig.gem_id = i.id

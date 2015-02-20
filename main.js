@@ -28,7 +28,7 @@ program
             type, eraOrSeason, options.hardcore);
 
         fetcher.heroes.subscribe(({hero, profile, count}) => {
-            log.info("Inserted %d records for:", count, profile);
+            log.info("Inserted %d records for %s:", count, hero.name, profile);
         }, (err) => {
             log.warn("Error inserting data", err);
         }, () => log.info("Finished saving hero data"));

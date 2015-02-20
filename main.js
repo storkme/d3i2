@@ -24,7 +24,7 @@ program
             eraOrSeason = options.season || config.get('model.currentEra');
         log.info("region=%s, class=%s, type=%s, eraOrSeason=%s", region, clss, type, eraOrSeason);
 
-        var fetcher = new D3iFetcher(region, clss, options.max_entries,
+        var fetcher = new D3iFetcher(region, clss, options.limit,
             type, eraOrSeason, options.hardcore);
 
         fetcher.heroes.subscribe(({hero, profile, count}) => {

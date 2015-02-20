@@ -9,7 +9,6 @@ var config = require('config'),
     D3iFetcher = require('./lib/d3i-fetcher');
 
 log.cli();
-log.level = 'debug';
 
 program
     .version(require('./package.json').version)
@@ -17,12 +16,16 @@ program
     .description('Fetch profile data for the given class on the given region')
     .option('-h, --hardcore', 'hardcore mode', false)
     .option('-s, --season <season_num>', 'seasonal')
+    .option('-l, --limit <max_entries>', 'how many ranking entries to inspect', 100)
+    .option('-v, --verbose', 'verbose logging', false)
     .action((region, clss, options) => {
+        log.level = options.verbose ? 'silly' : 'debug';
         var type = options.season ? 'season' : 'era',
             eraOrSeason = options.season || config.get('model.currentEra');
         log.info("region=%s, class=%s, type=%s, eraOrSeason=%s", region, clss, type, eraOrSeason);
 
-        var fetcher = new D3iFetcher(region, clss, type, eraOrSeason, options.hardcore);
+        var fetcher = new D3iFetcher(region, clss, options.max_entries,
+            type, eraOrSeason, options.hardcore);
 
         fetcher.heroes.subscribe(({hero, profile, count}) => {
             log.info("Inserted %d records for:", count, profile);

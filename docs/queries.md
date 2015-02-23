@@ -11,6 +11,7 @@ SELECT COUNT(*) as count, hi.slot, i.name
         INNER JOIN items i ON i.id = hi.item_id
     WHERE h.class = 'demon-hunter'
     GROUP BY hi.slot, i.id
+    HAVING COUNT(*) > 5
     ORDER BY slot, COUNT(*) DESC;
 ```
 
@@ -80,7 +81,7 @@ SELECT hi.slot, COUNT(*) as count, ia.name as name, AVG(ia.val_min)
     FROM hero_items hi
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN item_attrs ia on hi.id = ia.item_id
-        WHERE h.class = 'barbarian'
+        WHERE h.class = 'demon-hunter'
     GROUP BY h.class, hi.slot, ia.name
     HAVING COUNT(*) > 5
     ORDER BY h.class, hi.slot, COUNT(*) DESC;

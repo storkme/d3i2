@@ -42,4 +42,12 @@ program
             () => log.info("Finished inserting skills"));
     });
 
+program
+    .version(require('./package.json').version)
+    .command('group <players> <region>')
+    .description('Inspect class breakdowns for team grifts')
+    .action((players, region, options) => {
+
+    });
+
 program.parse(process.argv);

@@ -94,7 +94,7 @@ SELECT COUNT(*) as count, i.name as name
     FROM hero_items hi
         INNER JOIN hero h ON hi.hero_id = h.id
         INNER JOIN items i ON hi.item_id = i.id
-    WHERE h.class = 'monk'
+    WHERE h.class = 'barbarian'
         AND (slot = 'leftFinger' OR slot = 'rightFinger')
     GROUP BY i.name
     ORDER BY COUNT(*) DESC;

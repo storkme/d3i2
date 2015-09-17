@@ -7,15 +7,15 @@
     "poolSize": 50
   },
   "endpoints": {
-    "rankings": "http://${region}.battle.net/d3/en/rankings/${type}/${eraOrSeason}/rift-${hardcore}${clss}",
     "api": {
+      "rankings": "https://${region}.api.battle.net/data/d3/season/${season}/leaderboard/${leaderboard}",
       "profile": "http://${region}.battle.net/api/d3/profile/${name}-${code}/",
       "hero": "http://${region}.battle.net/api/d3/profile/${name}-${code}/hero/${heroId}",
       "item": "http://${region}.battle.net/api/d3/data/${itemData}"
     }
   },
   "model": {
-    "currentEra": 2,
+    "currentEra": 4,
     "items": {
       "required": [
         "head",
